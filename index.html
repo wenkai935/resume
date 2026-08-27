@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- 公开可索引，便于通过链接分享；如需禁止搜索引擎收录改为 "noindex" -->
+<meta name="robots" content="index, follow">
+<title>简历 · 涂装工艺工程师</title>
+<style>
+  :root{
+    --bg:#ffffff; --panel:#f4f7fb; --ink:#1f2937; --muted:#5f6b7a;
+    --line:#dbe3ee; --blue:#185FA5; --blue-soft:#E6F1FB; --ink-soft:#33415c;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--bg); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Segoe UI",sans-serif;
+    line-height:1.65; font-size:14px;
+  }
+  .page{max-width:960px; margin:0 auto; padding:28px 26px 56px;}
+
+  /* ===== 头部 ===== */
+  .head{display:flex; gap:22px; align-items:center; border-bottom:2px solid var(--blue); padding-bottom:18px;}
+  .avatar{
+    width:96px; height:96px; border-radius:50%; flex:0 0 auto;
+    background:var(--blue-soft); color:var(--blue);
+    display:flex; align-items:center; justify-content:center;
+    font-size:13px; text-align:center; border:1px solid var(--line); overflow:hidden;
+  }
+  .avatar img{width:100%; height:100%; object-fit:cover; display:block;}
+  .hinfo h1{font-size:24px; margin:0 0 4px; letter-spacing:1px;}
+  .hinfo .title{color:var(--blue); font-weight:600; font-size:15px; margin:0 0 8px;}
+  .contact{display:flex; flex-wrap:wrap; gap:6px 18px; color:var(--muted); font-size:13px;}
+  .contact span::before{content:"·"; color:var(--blue); margin-right:6px;}
+  .contact span:first-child::before{content:"";}
+
+  /* ===== 主体两栏 ===== */
+  .body{display:flex; gap:26px; margin-top:22px;}
+  .col-main{flex:1 1 62%; min-width:0;}
+  .col-side{flex:1 1 34%; min-width:0;}
+
+  h2{
+    font-size:15px; margin:0 0 12px; padding:6px 10px;
+    background:var(--panel); border-left:4px solid var(--blue); border-radius:4px; color:var(--ink-soft);
+  }
+  .sec{margin-bottom:24px;}
+  p{margin:8px 0;}
+  ul{margin:8px 0; padding-left:20px;}
+  li{margin:6px 0;}
+
+  .job{margin-bottom:14px;}
+  .job .jt{font-weight:600; color:var(--ink);}
+  .job .jd{color:var(--muted); font-size:13px; margin:2px 0 6px;}
+
+  .tags{display:flex; flex-wrap:wrap; gap:6px;}
+  .tag{background:var(--blue-soft); color:var(--blue); border-radius:6px; padding:3px 9px; font-size:12.5px;}
+
+  .kv{font-size:13px; color:var(--muted);}
+  .kv b{color:var(--ink); font-weight:600;}
+
+  .placeholder{color:#b06a00; background:#fff6e6; border:1px dashed #e6b870; border-radius:6px; padding:2px 8px; font-size:12.5px;}
+
+  .foot{color:var(--muted); font-size:12px; margin-top:34px; border-top:1px solid var(--line); padding-top:12px; text-align:center;}
+
+  /* ===== 响应式 ===== */
+  @media (max-width:680px){
+    .body{flex-direction:column;}
+    .head{flex-direction:column; text-align:center;}
+    .contact{justify-content:center;}
+  }
+
+  /* ===== 打印（A4）===== */
+  @media print{
+    body{font-size:12px;}
+    .page{max-width:none; padding:0;}
+    .col-side{background:transparent;}
+    a{color:inherit; text-decoration:none;}
+    .placeholder{border-style:solid; background:#fff;}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ===== 头部：姓名 / 求职意向 / 联系方式 ===== -->
+  <header class="head">
+    <div class="avatar">
+      <!-- 添加照片：把 photo.jpg 放入仓库，然后改成 <img src="photo.jpg" alt="个人照片"> -->
+      <span>照片<br>占位</span>
+    </div>
+    <div class="hinfo">
+      <h1><span class="placeholder">【待填写：姓名】</span></h1>
+      <p class="title">求职意向：涂装工艺工程师</p>
+      <div class="contact">
+        <span>电话：<span class="placeholder">【待填写】</span></span>
+        <span>邮箱：<span class="placeholder">【待填写】</span></span>
+        <span>所在地：<span class="placeholder">【待填写】</span></span>
+      </div>
+    </div>
+  </header>
+
+  <div class="body">
+    <!-- ===== 左主栏：简介 + 工作经历 ===== -->
+    <div class="col-main">
+
+      <!-- ① 个人简介 -->
+      <section class="sec">
+        <h2>个人简介</h2>
+        <p>资深汽车涂装工艺工程师，主导新建厂区涂装产线（前处理—电泳—喷涂—烘干）的试产与正式投产；建立关键工艺参数（KPP）与关键质量特性（CTQ）的在线监控与量化改进体系，以数据驱动方式系统性提升一次合格率、降低返修与能耗。</p>
+      </section>
+
+      <!-- ② 工作经历 -->
+      <section class="sec">
+        <h2>工作经历</h2>
+
+        <div class="job">
+          <div class="jt">新建产线调试</div>
+          <p>全程参与新建厂区涂装生产线（前处理—电泳—喷涂—烘干）的安装调试及新车型试产，主导试生产阶段工艺、设备与质量等跨部门问题的攻关，统筹资源保障产线按期达产并稳定达成设计节拍（JPH）。</p>
+        </div>
+
+        <div class="job">
+          <div class="jt">工艺过程管理</div>
+          <p>建立涂装关键工艺参数（喷涂室温湿度、槽液温度与浓度、涂料配比与粘度、链速等）与关键质量特性（漆膜厚度、外观）的在线监控机制；系统分析色差、针孔、流挂、橘皮及膜厚不均等典型缺陷根因，制定并实施针对性改进方案，推动涂装一次合格率由约 85% 提升至约 95%，单车涂装缺陷返修率下降约 40%。结合生产节拍与环境变化动态优化喷涂参数，使单车涂装材料损耗降低约 8%、单位涂装能耗下降约 6%。</p>
+        </div>
+      </section>
+    </div>
+
+    <!-- ===== 右侧栏：核心技能 + 教育/证书 ===== -->
+    <div class="col-side">
+      <section class="sec">
+        <h2>核心技能</h2>
+        <div class="tags">
+          <span class="tag">前处理 / 电泳 / 喷涂 / 烘干</span>
+          <span class="tag">IATF 16949 / 过程审核</span>
+          <span class="tag">KPP · CTQ 管控</span>
+          <span class="tag">SPC 控制图</span>
+          <span class="tag">8D / 鱼骨图(6M) / 5Why</span>
+          <span class="tag">一次合格率 85%→95%</span>
+          <span class="tag">返修率 ↓40%</span>
+          <span class="tag">材料损耗 ↓8% · 能耗 ↓6%</span>
+        </div>
+      </section>
+
+      <section class="sec">
+        <h2>教育背景</h2>
+        <p class="kv"><b>院校 / 专业 / 学历：</b><span class="placeholder">【待填写】</span></p>
+        <p class="kv"><b>毕业时间：</b><span class="placeholder">【待填写】</span></p>
+      </section>
+
+      <section class="sec">
+        <h2>证书 / 资质</h2>
+        <p class="kv"><span class="placeholder">【待填写：如涂装技师、质量工程师、IATF 16949 内审员等】</span></p>
+      </section>
+    </div>
+  </div>
+
+  <div class="foot">本简历由 WorkBuddy 生成并托管于 GitHub Pages · 内容可随时更新</div>
+</div>
+</body>
+</html>
