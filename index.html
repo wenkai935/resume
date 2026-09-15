@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- 关闭搜索引擎收录：页面含联系方式，仅通过链接定向分享；noindex 是控制收录的有效手段 -->
 <meta name="robots" content="noindex, nofollow">
-<title>简历 · 涂装工艺工程师</title>
+<title>张文凯 · 产品经理 | 简历</title>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <style>
   :root{
@@ -14,6 +14,7 @@
   }
   *{box-sizing:border-box;}
   html,body{margin:0;padding:0;}
+  [hidden]{display:none !important;}
   body{
     background:var(--bg); color:var(--ink);
     font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Segoe UI",sans-serif;
@@ -21,7 +22,7 @@
   }
   .page{max-width:960px; margin:0 auto; padding:28px 26px 56px;}
 
-  /* ===== 下载 / 打印操作区 ===== */
+  /* ===== 下载 / 加微信操作区 ===== */
   .actions{display:flex; gap:10px; justify-content:flex-end; flex-wrap:wrap; margin:0 0 16px;}
   .btn{
     display:inline-flex; align-items:center; justify-content:center;
@@ -37,7 +38,7 @@
   /* ===== 头部 ===== */
   .head{display:flex; gap:22px; align-items:center; border-bottom:2px solid var(--blue); padding-bottom:18px;}
   .avatar{
-    width:96px; height:96px; border-radius:50%; flex:0 0 auto;
+    width:96px; height:120px; border-radius:8px; flex:0 0 auto;
     background:var(--blue-soft); color:var(--blue);
     display:flex; align-items:center; justify-content:center;
     font-size:13px; text-align:center; border:1px solid var(--line); overflow:hidden;
@@ -49,143 +50,298 @@
   .contact span::before{content:"·"; color:var(--blue); margin-right:6px;}
   .contact span:first-child::before{content:"";}
 
-  /* ===== 主体两栏 ===== */
-  .body{display:flex; gap:26px; margin-top:22px;}
-  .col-main{flex:1 1 62%; min-width:0;}
-  .col-side{flex:1 1 34%; min-width:0;}
-
+  /* ===== 正文区块 ===== */
   h2{
     font-size:15px; margin:0 0 12px; padding:6px 10px;
     background:var(--panel); border-left:4px solid var(--blue); border-radius:4px; color:var(--ink-soft);
   }
-  .sec{margin-bottom:24px;}
+  .sec{margin-bottom:20px;}
   p{margin:8px 0;}
   ul{margin:8px 0; padding-left:20px;}
+  ol{margin:8px 0; padding-left:22px;}
   li{margin:6px 0;}
-
-  .job{margin-bottom:14px;}
-  .job .jt{font-weight:600; color:var(--ink);}
-  .job .jd{color:var(--muted); font-size:13px; margin:2px 0 6px;}
-
-  .tags{display:flex; flex-wrap:wrap; gap:6px;}
-  .tag{background:var(--blue-soft); color:var(--blue); border-radius:6px; padding:3px 9px; font-size:12.5px;}
-
+  strong,b{color:var(--ink); font-weight:600;}
   .kv{font-size:13px; color:var(--muted);}
   .kv b{color:var(--ink); font-weight:600;}
 
+  .job{margin-bottom:18px;}
+  .job:last-child{margin-bottom:0;}
+  .jhead{display:flex; align-items:baseline; justify-content:space-between; gap:12px; flex-wrap:wrap;}
+  .jhead .jt{font-weight:600; color:var(--ink); font-size:14.5px;}
+  .jhead .jp{color:var(--blue); font-weight:600; font-size:13.5px;}
+  .jhead .jd{color:var(--muted); font-size:12.5px; white-space:nowrap;}
+  .det{margin:6px 0 0;}
+  .det li{margin:5px 0;}
+  .desc p{margin:6px 0;}
+  .desc ol{margin:4px 0 8px;}
+
   .placeholder{color:#b06a00; background:#fff6e6; border:1px dashed #e6b870; border-radius:6px; padding:2px 8px; font-size:12.5px;}
 
-  .foot{color:var(--muted); font-size:12px; margin-top:34px; border-top:1px solid var(--line); padding-top:12px; text-align:center;}
+  /* ===== 加微信弹层 ===== */
+  .wx-mask{position:fixed; inset:0; display:none; align-items:center; justify-content:center; z-index:50;}
+  .wx-mask.open{display:flex;}
+  .wx-backdrop{position:absolute; inset:0; background:rgba(15,23,42,.45);}
+  .wx-card{
+    position:relative; background:#fff; border-radius:14px; padding:22px 24px 18px;
+    width:min(320px,86vw); text-align:center; box-shadow:0 18px 50px rgba(15,23,42,.28);
+  }
+  .wx-card h3{margin:0 0 14px; font-size:15px; color:var(--ink);}
+  .wx-close{
+    position:absolute; top:6px; right:10px; border:0; background:none; cursor:pointer;
+    font-size:22px; line-height:1; color:var(--muted);
+  }
+  .wx-qr{
+    width:190px; height:190px; margin:0 auto 12px; border:1px solid var(--line);
+    border-radius:10px; overflow:hidden; background:var(--panel);
+    display:flex; align-items:center; justify-content:center; padding:6px;
+  }
+  .wx-qr img{width:100%; height:100%; object-fit:contain; display:block;}
+  .wx-fallback{color:var(--muted); font-size:12.5px; margin:0; padding:0 6px; line-height:1.6;}
+  .wx-id{
+    font-size:13px; color:var(--muted); margin:0;
+    display:flex; align-items:center; justify-content:center; gap:8px; flex-wrap:wrap;
+  }
+  .wx-id b{letter-spacing:.5px;}
+  .btn-mini{padding:6px 12px; font-size:12.5px; border-radius:6px;}
+  .btn-mini.btn-primary{background:var(--blue); border-color:var(--blue); color:#fff;}
+  .wx-tip{min-height:17px; margin:8px 0 0; font-size:12px; color:var(--blue);}
+
+  .foot{color:var(--muted); font-size:12px; margin-top:26px; border-top:1px solid var(--line); padding-top:10px; text-align:center;}
 
   /* ===== 响应式 ===== */
   @media (max-width:680px){
-    .body{flex-direction:column;}
     .head{flex-direction:column; text-align:center;}
     .contact{justify-content:center;}
     .actions{justify-content:stretch;}
     .btn{flex:1 1 auto;}
+    .jhead .jd{white-space:normal;}
   }
 
   /* ===== 打印（A4）===== */
   /* 纸张与页边距的单一来源：浏览器打印 / 自动化构建 PDF 均以此为准 */
   @page{size:A4; margin:12mm;}
   @media print{
-    body{font-size:12px;}
+    body{font-size:12px; line-height:1.5;}
     .page{max-width:none; padding:0;}
-    .col-side{background:transparent;}
     a{color:inherit; text-decoration:none;}
     .placeholder{border-style:solid; background:#fff;}
-    /* 操作按钮不进入 PDF */
-    .actions{display:none !important;}
+    /* 操作按钮与弹层不进入 PDF */
+    .actions,.wx-mask{display:none !important;}
     /* 避免区块被拦腰分页 */
     .sec,.job{break-inside:avoid; page-break-inside:avoid;}
     .head{break-after:avoid; page-break-after:avoid;}
-    h2,.job .jt{break-after:avoid; page-break-after:avoid;}
+    h2,.jhead{break-after:avoid; page-break-after:avoid;}
   }
 </style>
 </head>
 <body>
 <div class="page">
 
-  <!-- ===== 下载 / 打印 ===== -->
+  <!-- ===== 下载 / 加微信 ===== -->
   <div class="actions">
-    <a class="btn btn-primary" href="resume.pdf" download="简历-涂装工艺工程师.pdf">↓ 下载 PDF 简历</a>
-    <button class="btn" type="button" onclick="window.print()">打印 / 另存为 PDF</button>
+    <a class="btn btn-primary" href="resume.pdf" download="张文凯-产品经理简历.pdf">↓ 下载 PDF 简历</a>
+    <button class="btn btn-primary" type="button" onclick="openWx()">添加微信</button>
   </div>
 
   <!-- ===== 头部：姓名 / 求职意向 / 联系方式 ===== -->
   <header class="head">
     <div class="avatar">
-      <!-- 添加照片：把 photo.jpg 放入仓库，然后改成 <img src="photo.jpg" alt="个人照片"> -->
-      <span>照片<br>占位</span>
+      <img src="photo.jpg" alt="张文凯 证件照">
     </div>
     <div class="hinfo">
-      <h1><span class="placeholder">【待填写：姓名】</span></h1>
-      <p class="title">求职意向：涂装工艺工程师</p>
+      <h1>张文凯</h1>
+      <p class="title">求职意向：产品经理</p>
       <div class="contact">
-        <span>电话：<span class="placeholder">【待填写】</span></span>
-        <span>邮箱：<span class="placeholder">【待填写】</span></span>
-        <span>所在地：<span class="placeholder">【待填写】</span></span>
+        <span>状态：离职</span>
+        <span>性别：男</span>
+        <span>生日：1995-10</span>
+        <span>工作经验：7 年</span>
+        <span>期望薪资：15-17K</span>
+        <span>电话：15889482136</span>
+        <span>邮箱：wenkai935@gmail.com</span>
+        <span>所在地：深圳</span>
       </div>
     </div>
   </header>
 
-  <div class="body">
-    <!-- ===== 左主栏：简介 + 工作经历 ===== -->
-    <div class="col-main">
+  <!-- ① 个人优势 -->
+  <section class="sec">
+    <h2>个人优势</h2>
+    <ul>
+      <li><strong>专业背景</strong>：多年产品研发经验，具备完整的项目产品从 0 到 1 的设计落地经验，具备业务推动及跨部门协同能力，量化项目数据指标，拆分任务并设立时间节点，推动项目如期完成，并进行总结复盘。</li>
+      <li><strong>市场分析</strong>：通过每季度的 IDC 数据以及自身销售数据分析，定位产品市场价位段以及 lifecycle volume。</li>
+      <li><strong>成本管理</strong>：分析 RFI / RFQ 数据，结合产品定价，调整认证、NRE 与产品 BOM 成本，在合理 ROI 范围内完成立项。</li>
+      <li><strong>沟通协作</strong>：具有良好的沟通协调能力，富有团队协作精神，能快速融入并推动团队发展。</li>
+    </ul>
+  </section>
 
-      <!-- ① 个人简介 -->
-      <section class="sec">
-        <h2>个人简介</h2>
-        <p>资深汽车涂装工艺工程师，主导新建厂区涂装产线（前处理—电泳—喷涂—烘干）的试产与正式投产；建立关键工艺参数（KPP）与关键质量特性（CTQ）的在线监控与量化改进体系，以数据驱动方式系统性提升一次合格率、降低返修与能耗。</p>
-      </section>
+  <!-- ② 教育经历 -->
+  <section class="sec">
+    <h2>教育经历</h2>
+    <div class="job">
+      <div class="jhead">
+        <span class="jt">哈尔滨工程大学（211） · 材料科学与化学工程 · 本科</span>
+      </div>
+    </div>
+  </section>
 
-      <!-- ② 工作经历 -->
-      <section class="sec">
-        <h2>工作经历</h2>
+  <!-- ③ 工作经验 -->
+  <section class="sec">
+    <h2>工作经验</h2>
 
-        <div class="job">
-          <div class="jt">新建产线调试</div>
-          <p>全程参与新建厂区涂装生产线（前处理—电泳—喷涂—烘干）的安装调试及新车型试产，主导试生产阶段工艺、设备与质量等跨部门问题的攻关，统筹资源保障产线按期达产并稳定达成设计节拍（JPH）。</p>
-        </div>
-
-        <div class="job">
-          <div class="jt">工艺过程管理</div>
-          <p>建立涂装关键工艺参数（喷涂室温湿度、槽液温度与浓度、涂料配比与粘度、链速等）与关键质量特性（漆膜厚度、外观）的在线监控机制；系统分析色差、针孔、流挂、橘皮及膜厚不均等典型缺陷根因，制定并实施针对性改进方案，推动涂装一次合格率由约 85% 提升至约 95%，单车涂装缺陷返修率下降约 40%。结合生产节拍与环境变化动态优化喷涂参数，使单车涂装材料损耗降低约 8%、单位涂装能耗下降约 6%。</p>
-        </div>
-      </section>
+    <div class="job">
+      <div class="jhead">
+        <span class="jt">紫光计算机科技有限公司</span>
+        <span class="jp">软件 &amp; 硬件产品经理</span>
+        <span class="jd">2023.09 - 2026.05</span>
+      </div>
+      <ol class="det">
+        <li><strong>产品调研与竞品分析</strong>：基于每季度 IDC 行业数据及内部销售数据，精准定位产品市场价位区间与全生命周期销量规划（Lifecycle Volume），系统梳理竞品及 OEM 厂商 SPEC，深入挖掘用户痛点，识别差异化竞争机会。</li>
+        <li><strong>产品规格定制</strong>：主导制定具备市场竞争力的产品规格方案，覆盖国产化技术路线选型、功能配置、性能参数与成本预算，结合 RFI / RFQ 数据合理管控认证、NRE 与产品 BOM 成本，保障在合理 ROI 区间完成立项。</li>
+        <li><strong>市场宣发与技术支持</strong>：统筹输出并迭代产品培训材料、技术白皮书及市场规格表，负责投标前参数适配、客户需求分析与问题闭环，支撑大客户定制项目按期交付。</li>
+        <li><strong>主导 BOM 系统（PLM）从 0 到 1 搭建</strong>：面向研发、产品、供应链等部门负责人及核心成员开展需求访谈与前期调研，规划系统架构与功能模块，覆盖产品研发、BOM 制作、零部件管理、工程变更（ECN）通知等核心业务全流程。</li>
+        <li><strong>推动系统落地</strong>：系统上线后通过调研落地卡点并跟进优化，在统一跨部门物料与 BOM 状态口径后，系统性解决了研发端物料编码混乱、版本不清等问题。研发数据人工核对工作量下降约 50%，有效降低研发返工与呆滞物料成本。</li>
+      </ol>
     </div>
 
-    <!-- ===== 右侧栏：核心技能 + 教育/证书 ===== -->
-    <div class="col-side">
-      <section class="sec">
-        <h2>核心技能</h2>
-        <div class="tags">
-          <span class="tag">前处理 / 电泳 / 喷涂 / 烘干</span>
-          <span class="tag">IATF 16949 / 过程审核</span>
-          <span class="tag">KPP · CTQ 管控</span>
-          <span class="tag">SPC 控制图</span>
-          <span class="tag">8D / 鱼骨图(6M) / 5Why</span>
-          <span class="tag">一次合格率 85%→95%</span>
-          <span class="tag">返修率 ↓40%</span>
-          <span class="tag">材料损耗 ↓8% · 能耗 ↓6%</span>
-        </div>
-      </section>
-
-      <section class="sec">
-        <h2>教育背景</h2>
-        <p class="kv"><b>院校 / 专业 / 学历：</b><span class="placeholder">【待填写】</span></p>
-        <p class="kv"><b>毕业时间：</b><span class="placeholder">【待填写】</span></p>
-      </section>
-
-      <section class="sec">
-        <h2>证书 / 资质</h2>
-        <p class="kv"><span class="placeholder">【待填写：如涂装技师、质量工程师、IATF 16949 内审员等】</span></p>
-      </section>
+    <div class="job">
+      <div class="jhead">
+        <span class="jt">北京千里马网信科技有限公司</span>
+        <span class="jp">产品经理（数据中台）</span>
+        <span class="jd">2021.03 - 2023.08</span>
+      </div>
+      <ol class="det">
+        <li><strong>产品规划</strong>：主导数据查询后台架构调整，基于部门协作流程与数据结构，设计并搭建查询任务分流架构，提升基础数据反馈时效，降低报表数据查询成本，提升数据查询效率，将决策调整周期缩短为次日级。</li>
+        <li><strong>流程优化</strong>：访谈并分析整理各部门业务流程与数据需求，挖掘用户痛点，基于对应岗位 KPI 与团队技术能力优化数据结构与查询流程，输出低成本高效率的解决方案，提升数据的查询汇总人效约 40%。</li>
+        <li><strong>业务探索</strong>：配合公司产品布局，加入新业务开发项目，分析市场投放与用户行为的业务数据，调整产品功能的同时尝试不同的投放策略，提升产品的拉新并增加用户留存。</li>
+        <li><strong>项目复盘</strong>：针对项目中各个环节进行跟进与记录，并运用 GRAI 分析法分解阶段性实现预期目标的影响因素，持续优化团队协作流程。</li>
+      </ol>
     </div>
-  </div>
 
-  
+    <div class="job">
+      <div class="jhead">
+        <span class="jt">海马汽车有限公司（郑州）</span>
+        <span class="jp">工艺工程师</span>
+        <span class="jd">2018.07 - 2020.06</span>
+      </div>
+      <ol class="det">
+        <li><strong>调试新建产线</strong>：参与 G3 车型在新厂区涂装生产线正式投产调试，负责生产阶段工艺问题的攻关，实现了由试产阶段日均下线 14 台至正式生产阶段日下线 200 台的阶段目标。</li>
+        <li><strong>工艺过程管理</strong>：通过对涂装关键工艺参数（温湿度、浓度、配比等）与关键质量特性（膜厚、色差）的在线监控，运用 SPC 趋势监控与鱼骨图根因分析色差、针孔、流挂、橘皮及膜厚不均等典型缺陷并实施针对性改进方案，推动涂装一次合格率由约 85% 提升至约 95%，单车涂装缺陷返修率相对降幅约 66.7%。</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ④ 项目经历 -->
+  <section class="sec">
+    <h2>项目经历</h2>
+
+    <div class="job">
+      <div class="jhead">
+        <span class="jt">国产化 PC 产品项目</span>
+        <span class="jp">产品经理（硬件）</span>
+        <span class="jd">2024/11 - 2026/01</span>
+      </div>
+      <div class="desc">
+        <p><strong>项目背景</strong>：紫光首次进入央采后决策在国产化 PC 产品线上继续拓展业务，需要在头部厂商已卡位的格局中找到差异化切入点。</p>
+        <p><strong>主要任务</strong>：在国产化笔记本产品线从 0 到 1 的规划与落地项目中完成产品定义（定位 / 定价 / 规格 / 成本）、跨部门交付管理，并辅助产品完成央采与行业大客户投标。</p>
+        <p><strong>推进方式</strong>：</p>
+        <ol>
+          <li><strong>产品成本管控</strong>：通过行业客户需求调研与竞品拆解，结合产品切入市场路线与定位，完成 4 款笔记本的定价、功能与技术规格定义。</li>
+          <li><strong>跨部门协同交付</strong>：拉通研发、结构设计、市场、采购、质量五个部门，保持紧密沟通合作，同时监控项目进度，确保产品开发进程顺利，产品良率符合预期。</li>
+          <li><strong>投标竞争力优化</strong>：逐项解析央采及行业客户标书，对产品规格配置等提出针对性优化，提升投标竞争力与用户满意度。</li>
+        </ol>
+        <p><strong>项目成果</strong>：</p>
+        <ol>
+          <li>成功推出覆盖三条技术路线的 4 款国产化笔记本，实现产品线从 0 到 1 落地并带动销售业绩显著增长；</li>
+          <li>产品在保持央采名录的同时，中标多家电力与医药行业大客户，打通高价值行业交付通道；</li>
+          <li>在信创国产化替代浪潮中确立紫光「第二梯队、错位竞争」的品牌认知。</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="jhead">
+        <span class="jt">BOM 系统 - PLM 项目</span>
+        <span class="jp">产品经理（软件）</span>
+        <span class="jd">2023/09 - 2024/10</span>
+      </div>
+      <div class="desc">
+        <p><strong>项目背景</strong>：公司研发端存在物料编码混乱、版本不清、跨部门 BOM 与物料管理标准不统一等问题。</p>
+        <p><strong>主要任务</strong>：负责 PLM 系统 BOM 板块的系统开发与落地迭代，提高产品数据准确性与研发协同效率。</p>
+        <p><strong>推进方式</strong>：</p>
+        <ol>
+          <li><strong>需求调研</strong>：对研发、产品、供应链、技术服务 4 个部门核心骨干开展管理层访谈，系统梳理业务痛点与系统诉求，输出需求基线。</li>
+          <li><strong>功能开发</strong>：以工单作为流转主题规范 BOM 流程，贯穿产品研发、BOM 制作、零部件管理、工程变更 ECN 通知，建立物料及 BOM 状态统一标准，拉齐跨部门协作规范。</li>
+        </ol>
+        <p><strong>项目成果</strong>：平台上线后，研发数据人工核对工作量下降约 50%，产品数据的完整性、正确性、一致性显著提升，研发管理实现高效化、精细化、标准化。</p>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="jhead">
+        <span class="jt">指南针 - 数据查询平台</span>
+        <span class="jp">产品经理</span>
+        <span class="jd">2021/03 - 2023/08</span>
+      </div>
+      <div class="desc">
+        <ol>
+          <li><strong>项目简介</strong>：指南针是业务部门内部使用的数据查询平台，旨在为事业部提供高效且准确的数据支持，帮助各部门及时评估各决策效果并指导新决策的制定。</li>
+          <li><strong>基本数据</strong>：平台展示 1900 万用户行为、结算数据，并打通市场、运营、售后数据，事业部实时在线查询率 20%。</li>
+          <li><strong>调整系统架构</strong>：基于数据查询频率，设计「自助查询 + 周报查询 + 自动任务」三通道分流框架。将高频、实时查询归入自助查询，通过数据超市进行查询；低频、时效型查询归入周报查询通道批量调度；周期性查询归入自动查询任务。从架构层面避免高频实时查询对系统资源的挤占，提升中台 40% 人效。</li>
+          <li><strong>数据超市</strong>：持续跟踪与总结各部门高频查询内容，将高频查询数据进行总结与拆分，提取字段作为可以自由组合的查询项，支持系统内进行数据组合分析并支持数据可视化，便于业务部门进行归因分析。</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <p class="foot">张文凯 · 产品经理 · 15889482136 · wenkai935@gmail.com</p>
 </div>
+
+<!-- ===== 添加微信弹层 ===== -->
+<div class="wx-mask" id="wxModal">
+  <div class="wx-backdrop" onclick="closeWx()"></div>
+  <div class="wx-card" role="dialog" aria-modal="true" aria-label="添加微信">
+    <button class="wx-close" type="button" aria-label="关闭" onclick="closeWx()">&times;</button>
+    <h3>微信扫码添加</h3>
+    <div class="wx-qr">
+      <img src="wechat-qr.png" alt="微信二维码" onerror="onQrError(this)">
+      <p class="wx-fallback" hidden>微信与手机号同号<br>直接搜索添加</p>
+    </div>
+    <p class="wx-id">微信号：<b>15889482136</b>
+      <button class="btn btn-mini btn-primary" type="button" onclick="copyWx()">复制</button>
+    </p>
+    <p class="wx-tip" id="wxTip"></p>
+  </div>
+</div>
+
+<script>
+  var WX_ID = "15889482136";
+
+  function openWx() { document.getElementById("wxModal").classList.add("open"); }
+  function closeWx() { document.getElementById("wxModal").classList.remove("open"); }
+
+  function onQrError(img) {
+    img.hidden = true;
+    var fallback = img.parentElement.querySelector(".wx-fallback");
+    if (fallback) fallback.hidden = false;
+  }
+
+  function copyWx() {
+    var tip = document.getElementById("wxTip");
+    var done = function () {
+      tip.textContent = "微信号已复制";
+      setTimeout(function () { tip.textContent = ""; }, 2000);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(WX_ID).then(done, function () { tip.textContent = "微信号：" + WX_ID; });
+    } else {
+      tip.textContent = "微信号：" + WX_ID;
+    }
+  }
+
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") closeWx();
+  });
+</script>
 </body>
 </html>

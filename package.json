@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "涂装工艺工程师简历静态页；由 index.html 自动生成 resume.pdf",
+  "description": "张文凯（产品经理）简历静态页；由 index.html 自动生成 resume.pdf",
   "scripts": {
     "build:pdf": "node scripts/build-pdf.mjs"
   },
