@@ -38,10 +38,11 @@
   /* ===== 头部 ===== */
   .head{display:flex; gap:22px; align-items:center; border-bottom:2px solid var(--blue); padding-bottom:18px;}
   .avatar{
-    width:96px; height:120px; border-radius:8px; flex:0 0 auto;
+    width:96px; height:120px; border-radius:8px; flex:0 0 auto; padding:0;
     background:var(--blue-soft); color:var(--blue);
     display:flex; align-items:center; justify-content:center;
     font-size:13px; text-align:center; border:1px solid var(--line); overflow:hidden;
+    cursor:zoom-in;                                  /* 点击可放大 */
   }
   .avatar img{width:100%; height:100%; object-fit:cover; display:block;}
   .hinfo h1{font-size:24px; margin:0 0 4px; letter-spacing:1px;}
@@ -106,6 +107,13 @@
   .btn-mini.btn-primary{background:var(--blue); border-color:var(--blue); color:#fff;}
   .wx-tip{min-height:17px; margin:8px 0 0; font-size:12px; color:var(--blue);}
 
+  /* ===== 照片放大（复用上面的遮罩样式）===== */
+  .lightbox-img{
+    position:relative; max-width:min(88vw,560px); max-height:84vh;
+    border-radius:12px; background:#fff; cursor:zoom-out;
+    box-shadow:0 18px 50px rgba(15,23,42,.35);
+  }
+
   .foot{color:var(--muted); font-size:12px; margin-top:26px; border-top:1px solid var(--line); padding-top:10px; text-align:center;}
 
   /* ===== 响应式 ===== */
@@ -145,9 +153,9 @@
 
   <!-- ===== 头部：姓名 / 求职意向 / 联系方式 ===== -->
   <header class="head">
-    <div class="avatar">
+    <button class="avatar" type="button" onclick="openPhoto()" aria-label="点击查看大图">
       <img src="photo.jpg" alt="张文凯 证件照">
-    </div>
+    </button>
     <div class="hinfo">
       <h1>张文凯</h1>
       <p class="title">求职意向：产品经理</p>
@@ -314,11 +322,20 @@
   </div>
 </div>
 
+<!-- ===== 照片放大 ===== -->
+<div class="wx-mask" id="photoModal">
+  <div class="wx-backdrop" onclick="closePhoto()"></div>
+  <img class="lightbox-img" src="photo.jpg" alt="张文凯 形象照" onclick="closePhoto()">
+</div>
+
 <script>
   var WX_ID = "15889482136";
 
   function openWx() { document.getElementById("wxModal").classList.add("open"); }
   function closeWx() { document.getElementById("wxModal").classList.remove("open"); }
+
+  function openPhoto() { document.getElementById("photoModal").classList.add("open"); }
+  function closePhoto() { document.getElementById("photoModal").classList.remove("open"); }
 
   function onQrError(img) {
     img.hidden = true;
@@ -340,7 +357,7 @@
   }
 
   document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape") closeWx();
+    if (e.key === "Escape") { closeWx(); closePhoto(); }
   });
 </script>
 </body>
