@@ -94,8 +94,9 @@ CHROME_PATH="/c/Program Files (x86)/Microsoft/Edge/Application/msedge.exe" npm r
 ## 照片与二维码
 - **照片**：`photo.jpg` 已就位，`index.html` 头部通过 `<img src="photo.jpg" alt="张文凯 证件照">` 引用。
   换照片只需覆盖同名文件（建议 JPG，压到 300KB 内），无需改代码。头部展示尺寸为 `.avatar` 里的 `96px × 120px`。
-- **微信二维码**：把微信个人二维码图存为根目录 `wechat-qr.png`，「添加微信」弹层会自动显示；
-  没有该文件则显示文字兜底提示（见上文按钮说明）。
+- **微信二维码**：`wechat-qr.png` 已就位（743×743 PNG，由原始长图裁去上下文字、四周留约 4 个模块静默区），
+  「添加微信」弹层会自动显示；没有该文件则显示文字兜底提示（见上文按钮说明）。
+  换二维码直接覆盖同名文件即可。
 
 ---
 
