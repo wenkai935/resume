@@ -1,0 +1,8 @@
+# 说明：本仓库是 GitHub 项目页（wenkai935.github.io/resume/），
+# 主流爬虫只读取域名根目录的 robots.txt，即 wenkai935.github.io/robots.txt。
+# 因此本文件对 Googlebot 等「不生效」，它用于表达意图、覆盖少数会读取
+# 子路径的爬虫。真正控制收录的是 index.html 里的
+# <meta name="robots" content="noindex, nofollow">。
+
+User-agent: *
+Disallow: /resume.pdf

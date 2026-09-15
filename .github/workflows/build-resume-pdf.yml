@@ -1,0 +1,59 @@
+name: 构建简历 PDF
+
+# index.html 一变，就重新渲染 resume.pdf 并提交回仓库，保证网页与 PDF 内容一致。
+# 触发路径刻意排除了 resume.pdf 本身，避免自己触发自己；提交信息另带 [skip ci] 双保险。
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'index.html'
+      - 'scripts/build-pdf.mjs'
+      - 'package.json'
+      - '.github/workflows/build-resume-pdf.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-resume-pdf
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 检出仓库
+        uses: actions/checkout@v4
+
+      - name: 安装中文字体
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends fonts-noto-cjk
+          fc-cache -f
+
+      - name: 准备 Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: 安装依赖
+        run: npm install --no-audit --no-fund
+
+      - name: 由 index.html 生成 resume.pdf
+        env:
+          CHROME_PATH: /usr/bin/google-chrome
+        run: npm run build:pdf
+
+      - name: 提交 PDF（仅内容变化时）
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add resume.pdf
+          if git diff --staged --quiet; then
+            echo "resume.pdf 无变化，跳过提交"
+            exit 0
+          fi
+          git commit -m "chore: 自动重建 resume.pdf [skip ci]"
+          git push

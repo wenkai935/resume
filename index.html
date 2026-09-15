@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- 公开可索引，便于通过链接分享；如需禁止搜索引擎收录改为 "noindex" -->
-<meta name="robots" content="index, follow">
+<!-- 关闭搜索引擎收录：页面含联系方式，仅通过链接定向分享；noindex 是控制收录的有效手段 -->
+<meta name="robots" content="noindex, nofollow">
 <title>简历 · 涂装工艺工程师</title>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <style>
@@ -20,6 +20,19 @@
     line-height:1.65; font-size:14px;
   }
   .page{max-width:960px; margin:0 auto; padding:28px 26px 56px;}
+
+  /* ===== 下载 / 打印操作区 ===== */
+  .actions{display:flex; gap:10px; justify-content:flex-end; flex-wrap:wrap; margin:0 0 16px;}
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center;
+    font-family:inherit; font-size:13px; line-height:1; white-space:nowrap;
+    padding:10px 16px; border-radius:8px; cursor:pointer; text-decoration:none;
+    border:1px solid var(--blue); background:#fff; color:var(--blue);
+    transition:background .15s ease, color .15s ease;
+  }
+  .btn:hover{background:var(--blue-soft);}
+  .btn-primary{background:var(--blue); border-color:var(--blue); color:#fff;}
+  .btn-primary:hover{background:#134a80;}
 
   /* ===== 头部 ===== */
   .head{display:flex; gap:22px; align-items:center; border-bottom:2px solid var(--blue); padding-bottom:18px;}
@@ -69,20 +82,36 @@
     .body{flex-direction:column;}
     .head{flex-direction:column; text-align:center;}
     .contact{justify-content:center;}
+    .actions{justify-content:stretch;}
+    .btn{flex:1 1 auto;}
   }
 
   /* ===== 打印（A4）===== */
+  /* 纸张与页边距的单一来源：浏览器打印 / 自动化构建 PDF 均以此为准 */
+  @page{size:A4; margin:12mm;}
   @media print{
     body{font-size:12px;}
     .page{max-width:none; padding:0;}
     .col-side{background:transparent;}
     a{color:inherit; text-decoration:none;}
     .placeholder{border-style:solid; background:#fff;}
+    /* 操作按钮不进入 PDF */
+    .actions{display:none !important;}
+    /* 避免区块被拦腰分页 */
+    .sec,.job{break-inside:avoid; page-break-inside:avoid;}
+    .head{break-after:avoid; page-break-after:avoid;}
+    h2,.job .jt{break-after:avoid; page-break-after:avoid;}
   }
 </style>
 </head>
 <body>
 <div class="page">
+
+  <!-- ===== 下载 / 打印 ===== -->
+  <div class="actions">
+    <a class="btn btn-primary" href="resume.pdf" download="简历-涂装工艺工程师.pdf">↓ 下载 PDF 简历</a>
+    <button class="btn" type="button" onclick="window.print()">打印 / 另存为 PDF</button>
+  </div>
 
   <!-- ===== 头部：姓名 / 求职意向 / 联系方式 ===== -->
   <header class="head">
