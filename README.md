@@ -92,8 +92,10 @@ CHROME_PATH="/c/Program Files (x86)/Microsoft/Edge/Application/msedge.exe" npm r
 ---
 
 ## 照片与二维码
-- **照片**：`photo.jpg` 已就位，`index.html` 头部通过 `<img src="photo.jpg" alt="张文凯 证件照">` 引用。
-  换照片只需覆盖同名文件（建议 JPG，压到 300KB 内），无需改代码。头部展示尺寸为 `.avatar` 里的 `96px × 120px`。
+- **照片（两张，各管一处）**
+  - `photo.jpg`（606×800，23KB）—— 头部小头像与 **PDF 里的照片**，`index.html` 头部 `<img src="photo.jpg">` 引用。换图覆盖同名文件即可。
+  - `portrait.jpg`（1213×1600，60KB）—— **点击头像后弹出的形象照**，弹层里 `<img class="lightbox-img" src="portrait.jpg">` 引用。
+  - 头部展示尺寸为 `.avatar` 里的 `96px × 120px`；弹层渲染 `560 × 739` CSS px，所以形象照 ≥1120×1478 才够 2 倍屏清晰。
 - **微信二维码**：`wechat-qr.png` 已就位（743×743 PNG，由原始长图裁去上下文字、四周留约 4 个模块静默区），
   「添加微信」弹层会自动显示；没有该文件则显示文字兜底提示（见上文按钮说明）。
   换二维码直接覆盖同名文件即可。
