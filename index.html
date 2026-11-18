@@ -129,14 +129,25 @@
   /* 纸张与页边距的单一来源：浏览器打印 / 自动化构建 PDF 均以此为准 */
   @page{size:A4; margin:12mm;}
   @media print{
-    body{font-size:12px; line-height:1.5;}
+    /* --- 行距标尺对齐「行间距参考.pdf」---
+       参考件量得：正文行高 ≈ 字号 × 1.57，条目间距额外约 4px。
+       此处取 13px / 1.58，配合收紧的区块间距，内容刚好铺满 A4 两页
+       （实测第 1 页末行 785pt、第 2 页末行 796pt，可打印区下沿 808pt）。 */
+    body{font-size:13px; line-height:1.58;}
+    .sec{margin-bottom:16px;}
+    .job{margin-bottom:14px;}
+    li,.det li{margin:4px 0;}
     .page{max-width:none; padding:0;}
     a{color:inherit; text-decoration:none;}
     .placeholder{border-style:solid; background:#fff;}
     /* 操作按钮与弹层不进入 PDF */
     .actions,.wx-mask{display:none !important;}
-    /* 避免区块被拦腰分页 */
-    .sec,.job{break-inside:avoid; page-break-inside:avoid;}
+    /* --- 分页控制 ---
+       只保证「行/段」不被拦腰切断；.sec、.job 允许跨页。
+       若对大区块设 break-inside:avoid，Chrome 会把整块推到下一页，
+       反而在页底留下大片空白（实测会从 2 页涨到 3 页）。 */
+    .sec,.job{break-inside:auto; page-break-inside:auto;}
+    li,p{break-inside:avoid; page-break-inside:avoid;}
     .head{break-after:avoid; page-break-after:avoid;}
     h2,.jhead{break-after:avoid; page-break-after:avoid;}
   }
@@ -164,7 +175,7 @@
         <span>性别：男</span>
         <span>生日：1995-10</span>
         <span>工作经验：7 年</span>
-        <span>期望薪资：17-19K</span>
+        <span>期望薪资：10-15K</span>
         <span>电话：15889482136</span>
         <span>邮箱：wenkai935@gmail.com</span>
         <span>所在地：深圳</span>
